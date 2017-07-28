@@ -1,0 +1,106 @@
+import java.util.Scanner;
+
+	class BFCInches {
+		public static void main(String args[]){
+		Scanner BFC = new Scanner(System.in);
+			double Thickness=0, Width=0, Length, Boards, Waste, BF, Inches;
+			int Count=0;
+			String Option, Error="Enter a valid integer!";
+	
+	
+			System.out.println (" JED's Board Foot Calculator ");
+			System.out.println ("\tver 0.320 ");
+			System.out.println (" Would you like to print Feet & Inches? (else decimal)");
+			Option = BFC.nextLine();
+			System.out.println ("");
+				//Run to Infinity
+				//while (true){
+			Count++;
+			System.out.println (" Calc #"+Count);
+			System.out.println (" Enter Thickness (inches)");
+
+		
+		//	if (BFC.hasNextInt()) 
+			//	Thickness = BFC.nextDouble();
+		//	else {
+			//	while(true) {
+			//		System.out.println(Error);
+			//		BFC.next();
+			//	if(BFC.hasNextInt())
+				//	break;}}
+				
+			
+			
+			try {
+				if (BFC.hasNextInt()) {
+					Thickness = BFC.nextDouble();
+				} else {
+					System.out.println(Error);
+					BFC.next();
+				}
+			} catch (!BFC.hasNextInt()) {
+				System.out.println("Error is: " + BFC.hasNextInt());
+			}
+
+			
+			
+			
+			
+			
+			
+	
+	
+			System.out.println (" Width (inches)");
+			
+			
+			if (BFC.hasNextInt()) 
+				Width = BFC.nextDouble();
+			else {
+				while(true) {
+					System.out.println(Error);
+					BFC.next();
+				if(BFC.hasNextInt())
+					break;}}
+				
+			
+			
+		//	Width = BFC.nextDouble();
+			System.out.println (" Length (feet)");
+			Length = BFC.nextDouble();
+			System.out.println (" Number of boards ");
+			Boards = BFC.nextDouble();
+			System.out.println (" Waste percentage (i.e. 50=50%)");
+			Waste = BFC.nextDouble();
+			BF = Width*Length*Thickness /12;
+			BF = BF*Boards;
+			Waste = Waste*.01 + Waste++;
+			BF = BF*Waste;
+				
+				//Prints Answers in ' "" Format
+				if (Option.equalsIgnoreCase ("y")||Option.equalsIgnoreCase ("yes")||Option.equalsIgnoreCase ("please")||Option.equalsIgnoreCase ("sure")||Option.equalsIgnoreCase ("yes")) {
+					Inches = BF-(int)BF;
+					Inches=Inches*12;
+					if (Inches>11){//Fixes the Round up to 12 bug :p
+						Inches=0;
+						BF++;}
+					System.out.print ("= ");
+					System.out.print ((int)BF);
+					System.out.print ("' ");
+					Inches=Math.ceil(Inches);//rounds up inches to next whole number
+					System.out.print ((int)Inches);
+					System.out.println ("\"");
+					System.out.println ("");
+					System.out.println ("");
+					System.out.println ("");}
+				
+				//Prints answers in a Decimal format
+				else {
+				System.out.println ("");
+				System.out.println(" Total BF " +BF);
+				System.out.println ("");
+				System.out.println ("");
+				System.out.println ("");}
+				}
+	
+			}
+		}
