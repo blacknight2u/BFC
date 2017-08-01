@@ -3,104 +3,78 @@ import java.util.Scanner;
 	class BFCInches {
 		public static void main(String args[]){
 		Scanner BFC = new Scanner(System.in);
-			double Thickness=0, Width=0, Length, Boards, Waste, BF, Inches;
+			double Thickness=1234567890, Width, Length, Boards, Waste, BF, Inches,Test=1234567890;
 			int Count=0;
-			String Option, Error="Enter a valid integer!";
-	
+			String Static, Option, Error="Enter a valid integer!";
+			
 	
 			System.out.println (" JED's Board Foot Calculator ");
 			System.out.println ("\tver 0.320 ");
-			System.out.println (" Would you like to print Feet & Inches? (else decimal)");
+			
+			//gives the user the choice between printing an decimal output or feet and inches
+			System.out.println (" Would you like to print Feet & Inches? (else decimal)\n");
 			Option = BFC.nextLine();
-			System.out.println ("");
-				//Run to Infinity
-				//while (true){
-			Count++;
-			System.out.println (" Calc #"+Count);
-			System.out.println (" Enter Thickness (inches)");
-
 		
-		//	if (BFC.hasNextInt()) 
-			//	Thickness = BFC.nextDouble();
-		//	else {
-			//	while(true) {
-			//		System.out.println(Error);
-			//		BFC.next();
-			//	if(BFC.hasNextInt())
-				//	break;}}
-				
+	//Run to Infinity, loops calc until closed
+	while (true){
+			
+			Count++;//calculation counter
+			System.out.println (" Calc #"+Count);
 			
 			
-			try {
-				if (BFC.hasNextInt()) {
-					Thickness = BFC.nextDouble();
-				} else {
-					System.out.println(Error);
-					BFC.next();
-				}
-			} catch (!BFC.hasNextInt()) {
-				System.out.println("Error is: " + BFC.hasNextInt());
-			}
-
+			//begins collecting user input for calculations
+			System.out.println (" Enter Thickness (inches)");
 			
+		//A sad excuse of exception handling  :(
+		//test code trying to catch "java.util.InputMismatchException"
+		do {
+			try{ //why does the program skip "try" and execute "catch" after running one cycle of line 17?
+			Static = BFC.nextLine();
+			Thickness = Double.parseDouble(Static);}
 			
-			
-			
-			
-			
+			catch(NumberFormatException err) {
+			System.out.println(Error);}}
 	
+			while(Thickness==Test);//loops the system input cycle till a integer is saved to Thickness
+		
 	
+			//Collects the rest of the variables (without exception handling)
 			System.out.println (" Width (inches)");
-			
-			
-			if (BFC.hasNextInt()) 
-				Width = BFC.nextDouble();
-			else {
-				while(true) {
-					System.out.println(Error);
-					BFC.next();
-				if(BFC.hasNextInt())
-					break;}}
-				
-			
-			
-		//	Width = BFC.nextDouble();
+			Width = BFC.nextDouble();
 			System.out.println (" Length (feet)");
 			Length = BFC.nextDouble();
-			System.out.println (" Number of boards ");
+			System.out.println (" Number of boards");
 			Boards = BFC.nextDouble();
 			System.out.println (" Waste percentage (i.e. 50=50%)");
 			Waste = BFC.nextDouble();
-			BF = Width*Length*Thickness /12;
-			BF = BF*Boards;
+			
+			//begins calculations
+			BF = Width*Length*Thickness /12;//calculates cubic area
+			BF = BF*Boards;//multiplies by number of boards :)
+			//converts percentage to decimal
 			Waste = Waste*.01 + Waste++;
-			BF = BF*Waste;
+			BF = BF*Waste;//factors in waste
 				
 				//Prints Answers in ' "" Format
-				if (Option.equalsIgnoreCase ("y")||Option.equalsIgnoreCase ("yes")||Option.equalsIgnoreCase ("please")||Option.equalsIgnoreCase ("sure")||Option.equalsIgnoreCase ("yes")) {
-					Inches = BF-(int)BF;
-					Inches=Inches*12;
-					if (Inches>11){//Fixes the Round up to 12 bug :p
-						Inches=0;
-						BF++;}
-					System.out.print ("= ");
-					System.out.print ((int)BF);
-					System.out.print ("' ");
+				if (Option.equalsIgnoreCase ("y")||Option.equalsIgnoreCase ("yes")||Option.equalsIgnoreCase ("please")||Option.equalsIgnoreCase ("sure")||Option.equalsIgnoreCase ("---")) {
+					
+					Inches = BF-(int)BF;//subtracts int from double to give a decimal
+					Inches=Inches*12;//converts the decimal to inches
+					if (Inches>11){//Fixes the Round up to 12 bug :p (a rare occurrence where when rounding up you would get an answer like 2 Feet 12 Inches)
+						Inches=0;//if inches will = 12 sets inches to zero
+						BF++;}//then adds the 12 inches back as a foot
+					System.out.print ("= "+(int)BF+"' ");
 					Inches=Math.ceil(Inches);//rounds up inches to next whole number
-					System.out.print ((int)Inches);
-					System.out.println ("\"");
-					System.out.println ("");
-					System.out.println ("");
-					System.out.println ("");}
+					System.out.println ((int)Inches+"\"\n\n\n");
+					}
 				
-				//Prints answers in a Decimal format
+				//Prints answers in a Decimal format (else decimal)
 				else {
 				System.out.println ("");
-				System.out.println(" Total BF " +BF);
-				System.out.println ("");
-				System.out.println ("");
-				System.out.println ("");}
+				System.out.println(" Total BF "+BF+"\n\n\n");
+					}
 				}
 	
 			}
 		}
+		
