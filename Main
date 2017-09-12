@@ -3,7 +3,7 @@ import java.util.Scanner;
 	class BFCInches {
 		public static void main(String args[]){
 		Scanner BFC = new Scanner(System.in);
-			double Thickness=1234567890, Width, Length, Boards, Waste, BF, Inches,Test=1234567890;
+			double Thickness, Width, Length, Boards, Waste, BF, Inches,Test=1234567890;
 			int Count=0;
 			String Static, Option, Error="Enter a valid integer!";
 			
@@ -17,7 +17,7 @@ import java.util.Scanner;
 		
 	//Run to Infinity, loops calc until closed
 	while (true){
-			
+		Thickness=1234567890;	
 			Count++;//calculation counter
 			System.out.println (" Calc #"+Count);
 			
@@ -50,9 +50,8 @@ import java.util.Scanner;
 			
 			//begins calculations
 			BF = Width*Length*Thickness /12;//calculates cubic area
-			BF = BF*Boards;//multiplies by number of boards :)
-			//converts percentage to decimal
-			Waste = Waste*.01 + Waste++;
+			BF *= Boards;//multiplies by number of boards :)
+			Waste = Waste*.01 + Waste++;//converts percentage to decimal
 			BF = BF*Waste;//factors in waste
 				
 				//Prints Answers in ' "" Format
@@ -72,9 +71,8 @@ import java.util.Scanner;
 				else {
 				System.out.println ("");
 				System.out.println(" Total BF "+BF+"\n\n\n");
-					}
 				}
-	
-			}
+			}	
 		}
+	}
 		
