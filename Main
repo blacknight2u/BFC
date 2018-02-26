@@ -1,78 +1,48 @@
 import java.util.Scanner;
 
-	class BFCInches {
-		public static void main(String args[]){
-		Scanner BFC = new Scanner(System.in);
-			double Thickness, Width, Length, Boards, Waste, BF, Inches,Test=1234567890;
-			int Count=0;
-			String Static, Option, Error="Enter a valid integer!";
-			
-	
-			System.out.println (" JED's Board Foot Calculator ");
-			System.out.println ("\tver 0.320 ");
-			
-			//gives the user the choice between printing an decimal output or feet and inches
-			System.out.println (" Would you like to print Feet & Inches? (else decimal)\n");
-			Option = BFC.nextLine();
-		
-	//Run to Infinity, loops calc until closed
-	while (true){
-		Thickness=1234567890;	
-			Count++;//calculation counter
-			System.out.println (" Calc #"+Count);
-			
-			
-			//begins collecting user input for calculations
-			System.out.println (" Enter Thickness (inches)");
-			
-		//A sad excuse of exception handling  :(
-		//test code trying to catch "java.util.InputMismatchException"
-		do {
-			try{ //why does the program skip "try" and execute "catch" after running one cycle of line 17?
-			Static = BFC.nextLine();
-			Thickness = Double.parseDouble(Static);}
-			
-			catch(NumberFormatException err) {
-			System.out.println(Error);}}
-	
-			while(Thickness==Test);//loops the system input cycle till a integer is saved to Thickness
-		
-	
-			//Collects the rest of the variables (without exception handling)
-			System.out.println (" Width (inches)");
-			Width = BFC.nextDouble();
-			System.out.println (" Length (feet)");
-			Length = BFC.nextDouble();
-			System.out.println (" Number of boards");
-			Boards = BFC.nextDouble();
-			System.out.println (" Waste percentage (i.e. 50=50%)");
-			Waste = BFC.nextDouble();
-			
-			//begins calculations
-			BF = Width*Length*Thickness /12;//calculates cubic area
-			BF *= Boards;//multiplies by number of boards :)
-			Waste = Waste*.01 + Waste++;//converts percentage to decimal
-			BF = BF*Waste;//factors in waste
-				
-				//Prints Answers in ' "" Format
-				if (Option.equalsIgnoreCase ("y")||Option.equalsIgnoreCase ("yes")||Option.equalsIgnoreCase ("please")||Option.equalsIgnoreCase ("sure")||Option.equalsIgnoreCase ("---")) {
-					
-					Inches = BF-(int)BF;//subtracts int from double to give a decimal
-					Inches=Inches*12;//converts the decimal to inches
-					if (Inches>11){//Fixes the Round up to 12 bug :p (a rare occurrence where when rounding up you would get an answer like 2 Feet 12 Inches)
-						Inches=0;//if inches will = 12 sets inches to zero
-						BF++;}//then adds the 12 inches back as a foot
-					System.out.print ("= "+(int)BF+"' ");
-					Inches=Math.ceil(Inches);//rounds up inches to next whole number
-					System.out.println ((int)Inches+"\"\n\n\n");
-					}
-				
-				//Prints answers in a Decimal format (else decimal)
-				else {
-				System.out.println ("");
-				System.out.println(" Total BF "+BF+"\n\n\n");
-				}
-			}	
-		}
-	}
-		
+
+class BFCAlpha {
+
+    static double Thickness, Width, Length, Boards, Waste, BF, Bank;
+    static String Unit="n",BankOption,Save;
+    static boolean UnitB, BankOptionB=false, SaveB=false;
+    static Scanner BFC = new Scanner(System.in);
+
+
+    public static void main(String args[]) {
+
+        Info Info = new Info();
+        Core Core = new Core();
+        int Count = 0;
+
+        Info.Info();
+
+        System.out.println(Info.Outputquery);
+        Unit = BFC.nextLine();
+
+        System.out.println(Info.Bank);
+        BankOption = BFC.nextLine();//converts string to boolean for save function
+        if (BankOption.equalsIgnoreCase ("y")|| BankOption.equalsIgnoreCase ("yes")){
+            BankOptionB=true;}
+
+            while (true) {
+            Count++;//calculation counter
+            System.out.println("\tCalc #" + Count);
+
+
+            //collects user input for calculations
+            System.out.println(" Enter Thickness (inches)");
+            Thickness = BFC.nextDouble();
+            System.out.println(" Width (inches)");
+            Width = BFC.nextDouble();
+            System.out.println(" Length (feet)");
+            Length = BFC.nextDouble();
+            System.out.println(" Number of boards");
+            Boards = BFC.nextDouble();
+            System.out.println(" Waste percentage (i.e. 50=50%)");
+            Waste = BFC.nextDouble();
+
+
+            Core.Output();}
+    }
+}
