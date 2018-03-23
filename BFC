@@ -1,0 +1,51 @@
+import java.util.Scanner;
+
+
+class BFCStable {
+
+    static double Thickness, Width, Length, Boards, Waste, BF, Bank, Inches;
+    static String Unit="n",BankOption,Save;
+    static boolean UnitB, BankOptionB=false, SaveB=false;
+    static Scanner BFC = new Scanner(System.in);
+
+
+    static double Value (){//cheesy exception handling
+        while (!BFC.hasNextDouble()) BFC.next();
+        double Output = BFC.nextDouble();
+        return Output;}
+
+
+    public static void main(String args[]) {
+
+        Info Info = new Info();
+        Core Core = new Core();
+        int Count = 0;//# of calc counter
+
+        Info.Info();
+        System.out.println(Info.Outputquery);
+        Unit = BFC.nextLine();
+
+        System.out.println(Info.Bank);
+        BankOption = BFC.nextLine();
+        BankOptionB=Core.Boolean(BankOption);//converts string to boolean for save function
+
+
+            while (true) {
+            Count++;//calculation counter
+            System.out.println("\n\tCalc #" + Count);
+
+            //collects user input for calculations
+            System.out.println(" Enter Thickness (inches)");
+            Thickness = Value ();//Checks variables for numerical value
+            System.out.println(" Width (inches)");
+            Width = Value ();
+            System.out.println(" Length (feet)");
+            Length = Value ();
+            System.out.println(" Number of boards");
+            Boards = Value ();
+            System.out.println(" Waste percentage (i.e. 50=50%)");
+            Waste = Value ();
+
+            Core.Output();}//Executes Calculation Code
+    }
+}
