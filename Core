@@ -1,0 +1,85 @@
+import java.util.Scanner;
+ class Core {
+     static Scanner BFC = new Scanner(System.in);
+
+
+
+    private void bank() {//saves a total bf for multiple calculations
+
+      if (BFCStable.BankOptionB)  {System.out.println(" Save? (Y/N)");//option to add current calculation to total
+          BFCStable.Save = BFC.nextLine();
+          BFCStable.SaveB=Boolean(BFCStable.Save);
+        if (BFCStable.BankOptionB&&BFCStable.SaveB){//adds latest calc to bank total
+            BFCStable.Bank += BFCStable.BF;
+            if (BFCStable.SaveB&&BFCStable.Bank!=BFCStable.BF) {//runs save function
+                if (BFCStable.UnitB){//prints bank
+                    BFCStable.Inches = Inches(BFCStable.Bank);
+                System.out.print(" = "+(int)BFCStable.Bank+"' ");
+                System.out.println((int)BFCStable.Inches+"\" BF Total\n");}
+                else
+                    System.out.println("\n Sum Total: "+ BFCStable.Bank+"\n\n ");}//print out the updated sum
+            }
+
+        if (!BFCStable.SaveB&&BFCStable.Bank>0) {//print current total if bank is greater than 0 and current calculation is not saved
+            if(BFCStable.UnitB){//inches
+                BFCStable.Inches = Inches(BFCStable.Bank);
+                System.out.print(" = "+(int)BFCStable.Bank+"' ");
+                System.out.println((int)BFCStable.Inches+"\" BF Total\n");}
+            else {//decimal
+                System.out.println("");
+                System.out.println(" "+BFCStable.Bank + " BF\n");;}
+            }
+            BFCStable.SaveB=false;//resets the save function
+      }
+    }
+
+
+     static boolean Boolean(String Input) {//Converts String to boolean
+         boolean Output;
+         if (Input.equalsIgnoreCase ("y")|| Input.equalsIgnoreCase ("yes")){
+             return Output= true;}
+         else
+             return Output=false;}
+
+
+    private static void Engine() {
+        BFCStable.BF = BFCStable.Width * BFCStable.Length * BFCStable.Thickness / 12;//calculates cubic area
+        BFCStable.BF *= BFCStable.Boards;//multiplies by number of boards :)
+        BFCStable.Waste *= .01;//converts percentage to decimal
+        BFCStable.Waste++;//adds waste and BF
+        BFCStable.BF *= BFCStable.Waste;}//factors in waste
+
+
+    private double Inches(double Output) {//converts a double to feet and inches
+         Output -= (int) Output;
+         Output*=12;
+
+         if (Output>11){//Fixes a bug that gave a answer like 10' 12"
+             Output=0;
+             Output++;}
+
+         Output=Math.ceil(Output);// rounds inches up
+         return Output;
+    }
+
+
+    void Output(){//prints answer to console
+        BFCStable.UnitB=Boolean(BFCStable.Unit);
+
+            if (BFCStable.UnitB){//prints Feet and Inches
+                Engine();
+                BFCStable.Inches = Inches (BFCStable.BF);
+                System.out.print(" = "+(int)BFCStable.BF+"' ");
+                System.out.println((int)BFCStable.Inches+"\" BF\n");
+
+            bank();}
+
+            else{//Prints answers in a Decimal format
+                Engine();
+                System.out.println("");
+                System.out.println(" "+BFCStable.BF + " BF\n");
+                bank();
+            }
+    }
+
+}
