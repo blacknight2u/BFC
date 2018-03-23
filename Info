@@ -1,0 +1,10 @@
+public class Info {
+    public void Info() {//Intro and ver#
+        String Intro=" JED's Board Foot Calculator  \n";
+        String Ver="\tver 1.01 Release ";
+        System.out.println(Intro+Ver);}
+
+//random call messages
+    public static String Outputquery=" Feet & Inches? (Defaults to decimal)";
+    public static String Bank=" Calculate a Total? (Defaults to false)";
+}
