@@ -1,10 +1,12 @@
-public class Info {
+public class
+Info {
     public void Info() {//Intro and ver#
         String Intro=" JED's Board Foot Calculator  \n";
-        String Ver="\tver 1.01 Release ";
+        String Ver="\tver 1.1 Release ";
         System.out.println(Intro+Ver);}
 
-//random call messages
-    public static String Outputquery=" Feet & Inches? (Defaults to decimal)";
-    public static String Bank=" Calculate a Total? (Defaults to false)";
+    //random call messages
+    static String OutputQuery=" Feet & Inches? (Defaults to decimal)";
+    static String Bank=" Calculate a Total? (Defaults to false)";
+    static String WasteInfo="Global Waste percentage (i.e. 50=50%)";
 }
