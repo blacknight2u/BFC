@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 class BFCStable {
 
-    static double Thickness, Width, Length, Boards, Waste, BF, Bank, Inches;
+    static double Thickness, Width, Length, Boards, GlobalWastePercent, Waste, BF, Bank, Inches;
     static String Unit,BankOption,Save;
     static boolean UnitB=false, BankOptionB=false, SaveB=false;
     static Scanner BFC=new Scanner(System.in);
@@ -19,6 +19,7 @@ class BFCStable {
 
         Info Info=new Info();
         Core Core=new Core();
+
         int Count=0;//# of calc counter
 
         Info.Info();
@@ -29,6 +30,8 @@ class BFCStable {
         BankOption=BFC.nextLine();
         BankOptionB=Core.Boolean(BankOption);//converts string to boolean for save function
 
+        System.out.println(Info.WasteInfo);
+        GlobalWastePercent=Value ();
 
             while (true) {
             Count++;//calculation counter
@@ -43,8 +46,6 @@ class BFCStable {
             Length=Value ();
             System.out.println(" Number of boards");
             Boards=Value ();
-            System.out.println(" Waste percentage (i.e. 50=50%)");
-            Waste=Value ();
 
             Core.Output();}//Executes Calculation Code
     }
