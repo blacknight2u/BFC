@@ -4,9 +4,9 @@ import java.util.Scanner;
 
 
 
-    private void bank() {//saves a total bf for multiple calculations
+    private void bank() {//saves total bf for multiple calculations
 
-      if (BFCStable.BankOptionB)  {System.out.println(" Save? (Y/N)");//option to add current calculation to total
+      if (BFCStable.BankOptionB)  {System.out.println(" Save? (Y/N)");//Offer save function
           BFCStable.Save=BFC.nextLine();
           BFCStable.SaveB=Boolean(BFCStable.Save);
         if (BFCStable.BankOptionB&&BFCStable.SaveB){//adds latest calc to bank total
@@ -21,14 +21,14 @@ import java.util.Scanner;
             }
 
         if (!BFCStable.SaveB&&BFCStable.Bank>0) {//print current total if bank is greater than 0 and current calculation is not saved
-            if (BFCStable.UnitB){//inches
+            if (BFCStable.UnitB){//print inches value
                 BFCStable.Inches=Inches(BFCStable.Bank);
                 System.out.print(" = "+(int)BFCStable.Bank+"' ");
                 System.out.println((int)BFCStable.Inches+"\" BF Total\n");}
-            else {//decimal
-                System.out.println(" "+BFCStable.Bank + " BF\n");;}
+            else {//prints decimal value
+                System.out.println(" "+BFCStable.Bank + " BF\n");}
             }
-            BFCStable.SaveB=false;}//resets the save function 
+            BFCStable.SaveB=false;}//resets the save boolean
     }
 
 
@@ -40,19 +40,22 @@ import java.util.Scanner;
              return Output=false;}
 
 
-    private static void Engine() {
-        BFCStable.BF=BFCStable.Width * BFCStable.Length * BFCStable.Thickness / 12;//calculates cubic area
-        BFCStable.BF*=BFCStable.Boards;//multiplies by number of boards :)
-        BFCStable.Waste*=.01;//converts percentage to decimal
-        BFCStable.Waste++;//adds waste and BF
-        BFCStable.BF*=BFCStable.Waste;}//factors in waste
+     private static void Engine() {
+         BFCStable.Waste=BFCStable.GlobalWastePercent;
+         BFCStable.BF=BFCStable.Width * BFCStable.Length * BFCStable.Thickness / 12;//calculates cubic area
+         BFCStable.BF*=BFCStable.Boards;//multiplies by number of boards :)
+         BFCStable.Waste*=.01;//converts percentage to decimal
+         if (BFCStable.Waste<1)BFCStable.Waste++;//adds waste and BF
+         BFCStable.BF*=BFCStable.Waste;}//factors in waste
+
 
 
     private double Inches(double Output) {//converts a double to feet and inches
          Output-=(int) Output;
          Output*=12;
 
-         if (Output>11){//Fixes a bug that gave a answer like 10' 12"
+
+         if (Output>11){//Fixes a bug caused by ceil that gave a answer like 10' 12"
              Output=0;
              Output++;}
 
@@ -73,8 +76,7 @@ import java.util.Scanner;
 
             else {//Prints answers in a Decimal format
                 Engine();
-                System.out.println("");
-                System.out.println(" "+BFCStable.BF + " BF\n");
+                System.out.println("\n "+BFCStable.BF + " BF\n");
                 bank();}
     }
 
