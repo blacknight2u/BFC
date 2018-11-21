@@ -33,7 +33,7 @@ class BFCStable {
         System.out.println(Info.WasteInfo);
         GlobalWastePercent=Value ();
 
-            while (true) {
+        while (true) {
             Count++;//calculation counter
             System.out.println("\n\tCalc #" + Count);
 
