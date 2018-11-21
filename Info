@@ -9,5 +9,5 @@ Info {
     //random call messages
     static String OutputQuery=" Feet & Inches? (Defaults to decimal)";
     static String Bank=" Calculate a Total? (Defaults to false)";
-    static String WasteInfo=" Global Waste percentage (i.e. 50=50%)";
+    static String WasteInfo=" Global Waste Percentage (i.e. 50=50%)";
 }
